@@ -1,0 +1,17 @@
+{
+  "title": "Focus-Visible Button Set",
+  "files": [
+    {
+      "path": "README.md",
+      "content": "# Focus-Visible Button Set\n\nA small study of button states done properly: hover, active, disabled, loading, and — the one most UIs get wrong — keyboard focus using `:focus-visible`.\n\n## Why it's interesting\n\nMouse users shouldn't see focus rings on click, but keyboard users must. `:focus-visible` solves this natively, yet many production sites still suppress focus entirely. This demo shows the correct pattern in ~60 lines of CSS.\n\n## Run it\n\nOpen `index.html` in any browser. Tab through the buttons, then click them — notice the focus ring appears only for keyboard navigation.\n\n## Contribute\n\n- Add a `prefers-reduced-motion` variant for the loading spinner\n- Add a dark-mode token set using `light-dark()`\n- Write a Playwright test asserting the focus-visible behavior\n"
+    },
+    {
+      "path": "index.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>Focus-Visible Button Set</title>\n<style>\n  :root {\n    --bg: #0f1115;\n    --surface: #1a1d24;\n    --accent: #6ea8fe;\n    --text: #e8eaf0;\n    --radius: 10px;\n  }\n  body {\n    margin: 0;\n    min-height: 100vh;\n    display: grid;\n    place-items: center;\n    background: var(--bg);\n    color: var(--text);\n    font-family: system-ui, sans-serif;\n  }\n  .row { display: flex; gap: 16px; flex-wrap: wrap; padding: 24px; }\n  button {\n    font: inherit;\n    padding: 10px 20px;\n    border-radius: var(--radius);\n    border: 1px solid transparent;\n    background: var(--accent);\n    color: #0b0d12;\n    cursor: pointer;\n    transition: transform 120ms ease, filter 120ms ease;\n  }\n  button:hover { filter: brightness(1.1); }\n  button:active { transform: scale(0.97); }\n  button:disabled { opacity: 0.45; cursor: not-allowed; }\n\n  /* The core of the demo: focus ring for keyboard users only */\n  button:focus { outline: none; }\n  button:focus-visible {\n    outline: 3px solid var(--text);\n    outline-offset: 3px;\n  }\n\n  .ghost { background: transparent; color: var(--accent); border-color: var(--accent); }\n  .loading { position: relative; color: transparent; pointer-events: none; }\n  .loading::after {\n    content: \"\";\n    position: absolute;\n    inset: 0;\n    margin: auto;\n    width: 16px; height: 16px;\n    border: 2px solid #0b0d12;\n    border-top-color: transparent;\n    border-radius: 50%;\n    animation: spin 700ms linear infinite;\n  }\n  @keyframes spin { to { transform: rotate(1turn); } }\n</style>\n</head>\n<body>\n  <div class=\"row\">\n    <button>Primary</button>\n    <button class=\"ghost\">Ghost</button>\n    <button disabled>Disabled</button>\n    <button class=\"loading\" aria-busy=\"true\">Loading</button>\n  </div>\n</body>\n</html>\n"
+    }
+  ],
+  "issue": {
+    "title": "Add a Playwright test for :focus-visible behavior",
+    "body": "A great first contribution! Add a small Playwright test that:\n\n1. Opens `index.html`\n2. Presses `Tab` and asserts the first button has a visible outline\n3. Clicks the second button with the mouse and asserts no outline is shown\n\nSetup commands are standard: `npm init -y && npm i -D @playwright/test && npx playwright install chromium`. Should take well under an hour — ask questions in the comments if you get stuck!"
+  }
+}

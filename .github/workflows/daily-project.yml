@@ -1,0 +1,58 @@
+name: Daily Craft Project
+
+on:
+  schedule:
+    # 06:15 UTC daily (07:15 Lagos time / WAT)
+    - cron: "15 6 * * *"
+  workflow_dispatch: # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate today's project
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate.js
+
+      - name: Rebuild project index in README
+        run: node scripts/update-index.js
+
+      - name: Commit and push
+        run: |
+          git config user.name "daily-craft-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          SLUG=$(cat .today-slug 2>/dev/null || echo "daily project")
+          git commit -m "Add daily project: ${SLUG}"
+          git push
+
+      - name: Open a good-first-issue for today's project
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f .today-issue.md ]; then
+            TITLE=$(head -n 1 .today-issue.md | sed 's/^# //')
+            BODY=$(tail -n +2 .today-issue.md)
+            gh issue create \
+              --title "$TITLE" \
+              --body "$BODY" \
+              --label "good first issue" \
+            || gh issue create --title "$TITLE" --body "$BODY"
+          fi
