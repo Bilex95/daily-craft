@@ -29,4 +29,4 @@ Every project ships with open improvement ideas, and there's always at least one
 
 | Date | Project | Category |
 | --- | --- | --- |
-| 2026-07-13 | [Focus-Visible Button Set](projects/2026-07-13-focus-visible-button-set) | 🛠️ Craft |
+| 2026-07-14 | [Focus-Visible Button Set](projects/2026-07-14-focus-visible-button-set) | 🛠️ Craft |
