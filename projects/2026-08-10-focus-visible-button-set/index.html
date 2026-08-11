@@ -57,6 +57,12 @@
     animation: spin 700ms linear infinite;
   }
   @keyframes spin { to { transform: rotate(1turn); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    button { transition: none; }
+    button:active { transform: none; }
+    .loading::after { animation: none; border-top-color: #0b0d12; opacity: 0.7; }
+  }
 </style>
 </head>
 <body>
