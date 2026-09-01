@@ -1,0 +1,15 @@
+{
+  "name": "2026-09-01-focus-visible-button-set",
+  "version": "1.0.0",
+  "description": "A small study of button states done properly: hover, active, disabled, loading, and — the one most UIs get wrong — keyboard focus using `:focus-visible`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
+  }
+}
