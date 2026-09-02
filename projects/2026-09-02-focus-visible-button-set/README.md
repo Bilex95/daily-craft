@@ -1,17 +1,21 @@
-# Focus-Visible Button Set
+# Focus-Visible Button Set — Playwright Tests
 
-A small study of button states done properly: hover, active, disabled, loading, and — the one most UIs get wrong — keyboard focus using `:focus-visible`.
+## What is this?
 
-## Why it's interesting
+A Playwright end-to-end test that validates proper `:focus-visible` behavior on a set of buttons. This ensures that:
 
-Mouse users shouldn't see focus rings on click, but keyboard users must. `:focus-visible` solves this natively, yet many production sites still suppress focus entirely. This demo shows the correct pattern in ~60 lines of CSS.
+- **Keyboard users** (pressing `Tab`) see a visible focus outline on the first button.
+- **Mouse users** (clicking) do **not** see a focus outline on the second button.
 
-## Run it
+This is a common accessibility pattern that many UIs get wrong.
 
-Open `index.html` in any browser. Tab through the buttons, then click them — notice the focus ring appears only for keyboard navigation.
+## Prerequisites
 
-## Contribute
+- [Node.js](https://nodejs.org/) (v18 or later)
+- A modern browser (Chromium is installed automatically)
 
-- Add a `prefers-reduced-motion` variant for the loading spinner
-- Add a dark-mode token set using `light-dark()`
-- Write a Playwright test asserting the focus-visible behavior
+## Setup
+
+```bash
+npm install
+npx playwright install chromium
