@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Focus-Visible Button Set</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --surface: #1a1d24;
+    --accent: #6ea8fe;
+    --text: #e8eaf0;
+    --radius: 10px;
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, sans-serif;
+  }
+  .row { display: flex; gap: 16px; flex-wrap: wrap; padding: 24px; }
+  button {
+    font: inherit;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    background: var(--accent);
+    color: #0b0d12;
+    cursor: pointer;
+    transition: transform 120ms ease, filter 120ms ease;
+  }
+  button:hover { filter: brightness(1.1); }
+  button:active { transform: scale(0.97); }
+  button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  /* The core of the demo: focus ring for keyboard users only */
+  button:focus { outline: none; }
+  button:focus-visible {
+    outline: 3px solid var(--text);
+    outline-offset: 3px;
+  }
+
+  .ghost { background: transparent; color: var(--accent); border-color: var(--accent); }
+  .loading { position: relative; color: transparent; pointer-events: none; }
+  .loading::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 16px; height: 16px;
+    border: 2px solid #0b0d12;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 700ms linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(1turn); } }
+</style>
+</head>
+<body>
+  <div class="row">
+    <button>Primary</button>
+    <button class="ghost">Ghost</button>
+    <button disabled>Disabled</button>
+    <button class="loading" aria-busy="true">Loading</button>
+  </div>
+</body>
+</html>
