@@ -25,10 +25,11 @@ Every project ships with open improvement ideas, and there's always at least one
 
 <!-- INDEX -->
 
-**74 projects and counting** — newest first.
+**75 projects and counting** — newest first.
 
 | Date | Project | Category |
 | --- | --- | --- |
+| 2026-09-26 | [Focus-Visible Button Set](projects/2026-09-26-focus-visible-button-set) | 🛠️ Craft |
 | 2026-09-25 | [Focus-Visible Button Set](projects/2026-09-25-focus-visible-button-set) | 🛠️ Craft |
 | 2026-09-24 | [Focus-Visible Button Set](projects/2026-09-24-focus-visible-button-set) | 🛠️ Craft |
 | 2026-09-23 | [Focus-Visible Button Set](projects/2026-09-23-focus-visible-button-set) | 🛠️ Craft |
