@@ -1,0 +1,12 @@
+{
+  "name": "2026-10-14-focus-visible-button-set",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright test for :focus-visible button behavior",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
