@@ -1,0 +1,12 @@
+{
+  "name": "focus-visible-button-set",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright coverage for the focus-visible button set demo",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  }
+}
