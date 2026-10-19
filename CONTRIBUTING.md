@@ -29,3 +29,5 @@ git checkout -b fix/2026-07-14-toast-focus-trap
 ```
 
 PRs are usually reviewed within a day or two. Be kind, have fun, and don't worry about getting it perfect — that's what review is for.
+
+Nice proyect.
