@@ -10,8 +10,12 @@ Mouse users shouldn't see focus rings on click, but keyboard users must. `:focus
 
 Open `index.html` in any browser. Tab through the buttons, then click them — notice the focus ring appears only for keyboard navigation.
 
+## Test
+
+From this project folder, run `npm install` once, then `npx playwright install chromium` and `npm test`. The tests cover keyboard-visible focus on the first button and the absence of a focus ring when the second button is mouse-clicked.
+
 ## Contribute
 
 - Add a `prefers-reduced-motion` variant for the loading spinner
 - Add a dark-mode token set using `light-dark()`
-- Write a Playwright test asserting the focus-visible behavior
+- Add more Playwright coverage for the disabled and loading button states
