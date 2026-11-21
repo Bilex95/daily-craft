@@ -15,3 +15,14 @@ Open `index.html` in any browser. Tab through the buttons, then click them — n
 - Add a `prefers-reduced-motion` variant for the loading spinner
 - Add a dark-mode token set using `light-dark()`
 - Write a Playwright test asserting the focus-visible behavior
+
+## Tests
+
+The demo is covered by a Playwright test for the focus-visible behaviour:
+
+```bash
+cd projects/2026-11-11-focus-visible-button-set
+npm install
+npx playwright install chromium
+npm test
+```
